@@ -1,0 +1,39 @@
+{
+  "name": "odontoquiz-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "clusters": "node config/clusters.js",
+    "production": "NODE_ENV=production node config/clusters.js",
+    "test": "NODE_ENV=test mocha test/**/*.js",
+    "apidoc": "apidoc -i app/routes -o public/apidoc"
+  },
+  "author": "Tony Costa",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.1",
+    "consign": "^0.1.6",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "express-shortcut": "^0.1.1",
+    "helmet": "^3.9.0",
+    "jwt-simple": "^0.5.1",
+    "mongo-sanitize": "^1.0.0",
+    "mongoose": "^4.11.3",
+    "mongoose-delete": "^0.4.0",
+    "mongoose-paginate": "^5.0.3",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.2.1",
+    "shuffle-array": "^1.0.1"
+  },
+  "devDependencies": {
+    "apidoc": "^0.17.6",
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "supertest": "^3.0.0"
+  }
+}

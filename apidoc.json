@@ -1,0 +1,8 @@
+{
+    "name": "odontoquiz-api",
+    "version": "0.0.1",
+    "description": "Documentation of the api odontoquiz-api",
+    "template": {
+        "forceLanguage": "en"
+    }
+}
