@@ -21,12 +21,21 @@ module.exports = () => {
       type: [questionAndAnswerSchema],
     },
     startedAt: {
-      type: Date,
-      default: Date.now
+      type: Date
     },
     finishedAt: {
       type: Date
     }
+  });
+
+  matchSchema.pre('save', function(next) {
+    this.startedAt = new Date();
+    next();
+  });
+
+  matchSchema.pre('update', function() {
+    this.finishedAt = new Date();
+    this.update({},{ $set: { finishedAt: new Date() } });
   });
 
   matchSchema.plugin(mongoosePaginate);

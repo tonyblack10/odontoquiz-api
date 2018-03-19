@@ -41,13 +41,12 @@ module.exports = app => {
     const _id = sanitize(req.params.id);
     try {
       const match = await Match.findById(_id);
-      delete match.startedAt;
       if(match.finishedAt) {
         res.status(400).json({message: 'After finished the match can not be changed'});
       } else {
-        match.questionsAndAnswers = req.body.questionsAndAnswers;
-        match.finishedAt = Date.now();
-        await match.save();
+        await match.update({
+          questionsAndAnswers: req.body.questionsAndAnswers,
+        });
         res.sendStatus(204);
       }
     } catch (err) {
