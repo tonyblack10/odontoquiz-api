@@ -7,7 +7,7 @@
     "start": "node app.js",
     "clusters": "node config/clusters.js",
     "production": "NODE_ENV=production node config/clusters.js",
-    "test": "NODE_ENV=test mocha test/**/*.js",
+    "test": "NODE_ENV=test mocha --exit test/**/*.js",
     "apidoc": "apidoc -i app/routes -o public/apidoc"
   },
   "author": "Tony Costa",
@@ -31,6 +31,7 @@
     "shuffle-array": "^1.0.1"
   },
   "devDependencies": {
+    "Faker": "^0.7.2",
     "apidoc": "^0.17.6",
     "chai": "^4.1.2",
     "mocha": "^4.0.1",

@@ -1,11 +1,13 @@
 const mongoose = require('mongoose');
+const config = require('./env/environment')();
+
 mongoose.Promise = global.Promise;
 
 module.exports = uri => {
   mongoose.connect(uri, {useMongoClient: true});
 
   mongoose.connection.on('connected', () => {
-    console.log(`Mongoose connected in: ${uri}`);
+    if(config.debug) console.log(`Mongoose connected in: ${uri}`);
   });
 
   mongoose.connection.on('error', (err) => {
@@ -13,12 +15,12 @@ module.exports = uri => {
   });
 
   mongoose.connection.on('disconnected', () => {
-    console.log(`Mongoose disconnected from ${uri}`);
+    if(config.debug) console.log(`Mongoose disconnected from ${uri}`);
   });
 
   process.on('SIGINT', () => {
     mongoose.connection.close(() => {
-      console.log('Disconnected by application term');
+      if(config.debug) console.log('Disconnected by application term');
       process.exit(0);
     });
   });
