@@ -1,8 +1,7 @@
 const jwt = require('jwt-simple');
-const mongoose = require('mongoose');
+const config = require('../../config/env/environment')();
 const categoryBuilder = require('../builders/categoryBuilder');
 const userBuilder = require('../builders/userBuilder');
-const config = require('../../config/env/environment')();
 
 describe('Route: categories', () => {
   const Category = app.models.category;
@@ -18,7 +17,6 @@ describe('Route: categories', () => {
       .then(() => User.create(userBuilder.getOne()))
       .then(user => {
         token = jwt.encode({id: user._id}, config.jwtSecret);
-        
         return Category.remove({});
       })
       .then(() => Category.insertMany(categoryBuilder.getMany()))

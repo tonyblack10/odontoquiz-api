@@ -48,7 +48,7 @@ module.exports = app => {
         match.questionsAndAnswers = req.body.questionsAndAnswers;
         match.finishedAt = Date.now();
         await match.save();
-        res.json({message: 'Match finished'});
+        res.sendStatus(204);
       }
     } catch (err) {
       res.status(500).json(err);

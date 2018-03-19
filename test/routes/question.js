@@ -1,5 +1,4 @@
 const jwt = require('jwt-simple');
-const mongoose = require('mongoose');
 const questionBuilder = require('../builders/questionBuilder');
 const categoryBuilder = require('../builders/categoryBuilder');
 const userBuilder = require('../builders/userBuilder');
