@@ -77,7 +77,8 @@ module.exports = app => {
     try {
       const categories = await Category
         .find({$or: [{'deleted': {$exists: false}}, {'deleted': false}]})
-        .select('name _id');
+        .select('name _id')
+        .sort({name: 1})
       res.json(categories);
     } catch (err) {
       res.status(500).json(err);
